@@ -1,9 +1,126 @@
-/* Reset */
-*{
+:root {
+    --fundo: #f6f8fa;
+    --superficie: #ffffff;
+    --texto: #24292f;
+    --texto-suave: #57606a;
+    --borda: #d0d7de;
+    --escuro: #24292f;
+    --terracota: #d95416;
+    --terracota-escura: #a63d0e;
+    --areia: #fff8f1;
+    --sombra: 0 8px 24px rgba(27, 31, 36, 0.1);
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    min-height: 100vh;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 85% 12%, rgba(217, 84, 22, 0.1), transparent 25rem),
+        var(--fundo);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
+.menu-navegador {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 64px;
+    padding: 12px max(24px, calc((100% - 1080px) / 2));
+    background: var(--escuro);
+    border-bottom: 3px solid var(--terracota);
+}
 
+.menu-navegador::before {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    content: "";
+    background: url("assets/logo.png") center / contain no-repeat;
+    filter: sepia(0.25) saturate(1.3);
+}
+
+.menu-navegador a {
+    padding: 8px 14px;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-navegador a:hover,
+.menu-navegador a:focus-visible {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+    outline: none;
+}
+
+.conteudo-principal {
+    width: min(100% - 32px, 760px);
+    margin: 64px auto;
+    padding: 48px;
+    text-align: center;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.logo {
+    display: block;
+    width: min(100%, 300px);
+    height: 210px;
+    margin: 0 auto 28px;
+    padding: 18px;
+    object-fit: contain;
+    background: var(--areia);
+    border: 1px solid #f0c8aa;
+    border-radius: 12px;
+}
+
+h1,
+h2 {
+    color: var(--escuro);
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.conteudo-principal p {
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+    .menu-navegador {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2px;
+        padding: 12px;
+    }
+
+    .menu-navegador::before {
+        display: none;
+    }
+
+    .menu-navegador a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .conteudo-principal {
+        margin: 32px auto;
+        padding: 28px 20px;
+    }
+}
